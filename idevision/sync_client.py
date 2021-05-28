@@ -113,7 +113,3 @@ class sync_client:
 
     def cdn_delete(self, node, slug):
         return self._request("DELETE", f"{self.base_url}cdn/{node}/{slug}")
-
-client = sync_client()
-
-print(client.sphinxrtfm("https://discordpy.readthedocs.io/en/latest", "bot"))
