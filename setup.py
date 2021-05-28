@@ -5,7 +5,7 @@ with open("requirements.txt", "r") as f:
     REQUIREMENTS = f.read().splitlines()
 
 README = ""
-with open("readme.md", "r") as f:
+with open("README.md", "r") as f:
     README = f.read()
 
 setup(
