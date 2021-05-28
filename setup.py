@@ -19,7 +19,7 @@ setup(
     author_email="isaacjontaylor@gmail.com",
     license="GPL-3.0",
     classifiers=[
-        "License :: OSI Approved :: GPL-3.0 License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9"
