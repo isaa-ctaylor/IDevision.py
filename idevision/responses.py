@@ -19,7 +19,7 @@ class RTFSResponse(idevisionresponse):
     def __str__(self):
         return f"<RTFSResponse nodes={self.nodes} response_time={self.response_time}>"
 
-class xkcdcomic(idevisionresponse):
+class XKCDComic(idevisionresponse):
     def __init__(self, number, posted, safe_title, title, alt, transcript, news, image_url, url):
         self.number = number
         
@@ -38,9 +38,9 @@ class xkcdcomic(idevisionresponse):
         self.url = url
 
     def __str__(self):
-        return f"<xkcdcomic number={self.number} posted={datetime.datetime.strftime(self.posted, '%Y-%m-%dT%H:%M:%S')} safe_title={self.safe_title} title={self.title} alt_text={self.alt_text} transcript={self.transcript} news={self.news} image_url={self.image_url} url={self.url}>"
+        return f"<XKCDComic number={self.number} posted={datetime.datetime.strftime(self.posted, '%Y-%m-%dT%H:%M:%S')} safe_title={self.safe_title} title={self.title} alt_text={self.alt_text} transcript={self.transcript} news={self.news} image_url={self.image_url} url={self.url}>"
 
-class xkcdresponse(idevisionresponse):
+class XKCDResponse(idevisionresponse):
     def __init__(self, nodes, query_time):
         self.nodes = nodes
 
@@ -49,7 +49,7 @@ class xkcdresponse(idevisionresponse):
     def __str__(self):
         return f"<xkcd nodes={[str(node) for node in self.nodes]} query_time={self.query_time}>"
     
-class cdnresponse(idevisionresponse):
+class CDNResponse(idevisionresponse):
     def __init__(self, url, slug, node):
         self.url = url
         self.slug = slug
@@ -58,7 +58,7 @@ class cdnresponse(idevisionresponse):
     def __str__(self):
         return f"{self.slug} at {self.url} on node {self.node}"
     
-class cdnstats(idevisionresponse):
+class CDNStats(idevisionresponse):
     def __init__(self, upload_count, uploaded_today, last_uploaded):
         self.upload_count = upload_count
         self.uploaded_today = uploaded_today
@@ -66,9 +66,9 @@ class cdnstats(idevisionresponse):
         self.last_uploaded = last_uploaded
         
     def __str__(self):
-        return f"<cdnstats upload_count={self.upload_count} uploaded_today={self.uploaded_today} last_uploaded={self.last_uploaded}>"
+        return f"<CDNStats upload_count={self.upload_count} uploaded_today={self.uploaded_today} last_uploaded={self.last_uploaded}>"
     
-class cdnupload(idevisionresponse):
+class CDNUpload(idevisionresponse):
     def __init__(self, url, timestamp, author, views, node, size, expiry):
         self.url = url
         self.timestamp = datetime.datetime.fromtimestamp(timestamp)
@@ -79,4 +79,4 @@ class cdnupload(idevisionresponse):
         self.expiry = expiry
         
     def __str__(self):
-        return f"<cdnupload url={self.url} timestamp={self.timestamp} author={self.author} views={self.views} node={self.node} size={self.size} expiry={self.expiry}>"
+        return f"<CDNUpload url={self.url} timestamp={self.timestamp} author={self.author} views={self.views} node={self.node} size={self.size} expiry={self.expiry}>"
