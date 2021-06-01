@@ -1,7 +1,3 @@
----
-description: An unofficial wrapper for the IDevision API
----
-
 # idevision.py
 
 ## Installation
@@ -18,7 +14,7 @@ pip install -U idevision.py
 pip install -U git+https://github.com/isaa-ctaylor/idevision.py
 ```
 
-## Quick start
+## Examples
 
 ```python
 # Sync
