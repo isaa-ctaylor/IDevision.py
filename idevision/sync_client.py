@@ -1,8 +1,13 @@
-import requests
-from errors import ApiError, Banned, MaxRetryReached, InvalidRtfsLibrary, InvalidToken, TagAlreadyAssigned, NotFound
-from responses import RTFMResponse, RTFSResponse, XKCDResponse, XKCDComic, CDNResponse, CDNStats, CDNUpload
-import time
 import imghdr
+import time
+
+import requests
+
+from .errors import (ApiError, Banned, InvalidRtfsLibrary, InvalidToken,
+                     MaxRetryReached, NotFound, TagAlreadyAssigned)
+from .responses import (CDNResponse, CDNStats, CDNUpload, RTFMResponse,
+                        RTFSResponse, XKCDComic, XKCDResponse)
+
 
 class sync_client:
     def __init__(self, token: str=None, *, retry: int=5):
@@ -77,7 +82,7 @@ class sync_client:
     def xkcd(self, query):
         response = self._request("GET", f"{self.base_url}public/xkcd", params={"search": query})
 
-        return xkcd([XKCDComic(node["num"], node["posted"], node["safe_title"], node["title"], node["alt"], node["transcript"], node["news"], node["image_url"], node["url"]) for node in response["nodes"]], response["query_time"])
+        return XKCDResponse([XKCDComic(node["num"], node["posted"], node["safe_title"], node["title"], node["alt"], node["transcript"], node["news"], node["image_url"], node["url"]) for node in response["nodes"]], response["query_time"])
 
     def xkcd_tag(self, tag, number):
         response = self._request("PUT", f"{self.base_url}public/xkcd/tags", json={"tag": tag, "num": number})
@@ -108,7 +113,3 @@ class sync_client:
 
     def cdn_delete(self, node, slug):
         return self._request("DELETE", f"{self.base_url}cdn/{node}/{slug}")
-
-client = sync_client()
-
-print(client.sphinxrtfm("https://discordpy.readthedocs.io/en/latest", "bot"))

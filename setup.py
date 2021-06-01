@@ -5,12 +5,12 @@ with open("requirements.txt", "r") as f:
     REQUIREMENTS = f.read().splitlines()
 
 README = ""
-with open("readme.md", "r") as f:
+with open("README.md", "r") as f:
     README = f.read()
 
 setup(
     name="idevision.py",
-    version="1.0.0",
+    version="v1.0.2",
     description="A python wrapper for the IDevision api",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setup(
     author_email="isaacjontaylor@gmail.com",
     license="GPL-3.0",
     classifiers=[
-        "License :: OSI Approved :: GPL-3.0 License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9"
