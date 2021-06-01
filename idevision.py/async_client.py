@@ -1,7 +1,7 @@
 import asyncio
 import aiohttp
 from errors import ApiError, Banned, MaxRetryReached, InvalidRtfsLibrary, InvalidToken, TagAlreadyAssigned, NotFound
-from responses import RTFMResponse, RTFSResponse, xkcdresponse, xkcdcomic, cdnresponse, cdnstats, cdnupload
+from responses import RTFMResponse, RTFSResponse, XKCDResponse, XKCDComic, CDNResponse, CDNStats, CDNUpload
 
 import imghdr
 
@@ -79,7 +79,7 @@ class async_client:
     async def xkcd(self, query):
         response = await self._request("GET", f"{self.base_url}public/xkcd", params={"search": query})
 
-        return xkcd([xkcdcomic(node["num"], node["posted"], node["safe_title"], node["title"], node["alt"], node["transcript"], node["news"], node["image_url"], node["url"]) for node in response["nodes"]], response["query_time"])
+        return xkcd([XKCDComic(node["num"], node["posted"], node["safe_title"], node["title"], node["alt"], node["transcript"], node["news"], node["image_url"], node["url"]) for node in response["nodes"]], response["query_time"])
 
     async def xkcd_tag(self, tag, number):
         response = await self._request("PUT", f"{self.base_url}public/xkcd/tags", json={"tag": tag, "num": number})
@@ -98,17 +98,17 @@ class async_client:
 
         response = await self._request("POST", f"{self.base_url}cdn", headers={"File-Name": filetype}, data=image)
         
-        return cdnresponse(response["url"], response["slug"], response["node"])
+        return CDNResponse(response["url"], response["slug"], response["node"])
     
     async def cdn_stats(self):
         response = await self._request("GET", f"{self.base_url}cdn")
 
-        return cdnstats(response["upload_count"], response["uploaded_today"], response["last_upload"])
+        return CDNStats(response["upload_count"], response["uploaded_today"], response["last_upload"])
     
     async def cdn_get(self, node, slug):
         response = await self._request("GET", f"{self.base_url}cdn/{node}/{slug}")
         
-        return cdnupload(response["url"], response["timestamp"], response["author"], response["views"], response["node"], response["size"], response["expiry"])
+        return CDNUpload(response["url"], response["timestamp"], response["author"], response["views"], response["node"], response["size"], response["expiry"])
 
     async def cdn_delete(self, node, slug):
         response = await self._request("DELETE", f"{self.base_url}cdn/{node}/{slug}")
