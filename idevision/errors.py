@@ -22,6 +22,13 @@ class MaxRetryReached(idevisionerror):
     def __str__(self):
         return f"The maximum {self.retry_times} times to retry has been reached!"
 
+class InvalidRtfmLibrary(idevisionerror):
+    def __init__(self, library):
+        self.library = library
+
+    def __str__(self):
+        return f"{self.library} is not a valid rtfm library"
+
 class InvalidRtfsLibrary(idevisionerror):
     def __init__(self, library, *allowed):
         self.library = library

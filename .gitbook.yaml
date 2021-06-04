@@ -1,0 +1,4 @@
+root: ./docs/
+
+structure:
+  readme: ./release/README.md

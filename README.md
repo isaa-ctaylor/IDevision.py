@@ -14,7 +14,7 @@ pip install -U git+https://github.com/isaa-ctaylor/idevision.py
 
 ```
 
-## Quick start
+## Examples
 
 ```python
 # Sync
