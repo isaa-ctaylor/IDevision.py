@@ -318,14 +318,14 @@ class sync_client:
             response["expiry"],
         )
 
-    def cdn_delete(self, node: str, slug: str) -> aiohttp.ClientResponse:
+    def cdn_delete(self, node: str, slug: str) -> requests.Response:
         """Delete an entry to the cdn
 
         :param node: The node to search on
         :type node: str
         :param slug: The filename to search for
         :type slug: str
-        :return: An aiohttp.ClientResponse object
-        :rtype: aiohttp.ClientResponse
+        :return: A requests.Response object
+        :rtype: requests.Response
         """
         return self._request("DELETE", f"{self.base_url}cdn/{node}/{slug}")
