@@ -3,6 +3,7 @@
 ## Installation
 
 Installation is simple!
+
 ```python
 # Stable version
 
@@ -11,10 +12,9 @@ pip install -U idevision.py
 # Development version
 
 pip install -U git+https://github.com/isaa-ctaylor/idevision.py
-
 ```
 
-## Quick start
+## Examples
 
 ```python
 # Sync
@@ -39,3 +39,4 @@ client = async_client(TOKEN)
 
 print(await client.sphinxrtfm("https://docs.aiohttp.org/en/stable/", "ClientSession"))
 ```
+
