@@ -10,12 +10,12 @@ from .responses import (RTFMResponse, RTFSResponse, CDNResponse, CDNStats,
 
 
 class async_client:
-    def __init__(self, token: str=None, *, retry: int=5):
+    def __init__(self, token: str=None, *, retry: int=5, url="https://idevision.net/api/"):
         self.token=token
 
         self.retry=int(retry)
 
-        self.base_url="https://idevision.net/api/"
+        self.base_url=url.strip('/') + '/'
 
     async def _request(self, method, url, **kwargs):
         headers = kwargs.pop("headers", {})
