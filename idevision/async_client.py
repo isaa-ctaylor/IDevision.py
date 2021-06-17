@@ -254,11 +254,11 @@ class async_client:
         if response.reason.startswith("Tag"):
             raise TagAlreadyAssigned(response.reason)
 
-    async def homepage(self, links: dict[str, str]):
+    async def homepage(self, links: Dict[str, str]):
         """Add links to your homepage, which can be viewed at https://idevision.net/homepage?user=YOUR_USERNAME
 
         :param links: A dictionary of str, str
-        :type links: dict[str, str]
+        :type links: Dict[str, str]
         :return: True if success
         :rtype: bool
         """
