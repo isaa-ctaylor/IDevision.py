@@ -102,7 +102,7 @@ class async_client:
         :rtype: RTFMResponse
         """
         async with aiohttp.ClientSession() as cs:
-            async with cs.get(f"{location.removesuffix('/')}/objects.inv") as resp:
+            async with cs.get(f"{location.rstrip('/')}/objects.inv") as resp:
                 if resp.status == 404:
                     raise InvalidRtfmLibrary(location)
 

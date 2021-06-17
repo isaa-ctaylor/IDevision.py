@@ -100,7 +100,7 @@ class sync_client:
         :return: An RTFMResponse object
         :rtype: RTFMResponse
         """
-        with requests.get(f"{location.removesuffix('/')}/objects.inv") as resp:
+        with requests.get(f"{location.rstrip('/')}/objects.inv") as resp:
             if resp.status == 404:
                 raise InvalidRtfmLibrary(location)
 
