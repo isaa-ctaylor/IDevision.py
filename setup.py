@@ -10,7 +10,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="idevision.py",
-    version="v1.0.8",
+    version="v1.0.9",
     description="A python wrapper for the IDevision api",
     long_description=README,
     long_description_content_type="text/markdown",
